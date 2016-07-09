@@ -1,0 +1,6 @@
+LET T 5
+IF T >= 5 THEN 4
+PRINT T
+PRINT T
+END
+.

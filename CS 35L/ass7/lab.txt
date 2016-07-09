@@ -1,0 +1,82 @@
+lab 7
+
+function of each program: 
+
+tr2b.c: reads each character
+tr2u.c: reads each byte
+
+
+
+3. 
+I wrote the program and used chmod +x to gives it permission.
+I then did some basic testing for the programs, such as:
+from: aa, to : ab to make sure it meets the spec’s requirement. 
+
+I used the following line to produce the large file:
+$ head -c 5000000 /dev/urandom > output.txt
+
+
+then I used the following lines to test the number of system calls
+issued by the two programs:
+
+$ strace -c ./tr2b 'abc' 'qwe' < output.txt
+
+
+$ strace -c ./tr2b 'abc' 'qwe' < output.txt > test2.txt
+
+
+$ strace -c ./tr2u 'abc' 'qwe' < output.txt
+
+
+$ strace -c ./tr2u 'abc' 'qwe' < output.txt > test2.txt
+
+As a result, I got that tr2b makes a lot less calls comparing to tr2u 
+in general. The possible reason might be that tr2b uses buffered I/O and 
+runs getchar and putchar less comparing to the write and read in tr2u, 
+where as they call write() and read() everytime a char input and output. 
+
+Comparing 
+$ strace -c ./tr2b 'abc' 'qwe' < output.txt
+$ strace -c ./tr2b 'abc' 'qwe' < output.txt > test2.txt
+these two, the second line uses less calls. 
+
+They make the same file. 
+
+
+4.
+time results:
+
+$ time ./tr2b 'abc' 'qwe' < output.txt
+real    0m2.131s
+user    0m0.251s
+sys     0m0.108s
+
+$ time ./tr2b 'abc' 'qwe' < output.txt > test2.txt
+real    0m0.311s
+user    0m0.169s
+sys     0m0.072s
+
+$ time ./tr2u 'abc' 'qwe' < output.txt
+real    0m6.159s
+user    0m0.423s
+sys     0m5.877s
+
+$ time ./tr2u 'abc' 'qwe' < output.txt > test2.txt
+real    0m5.193s
+user    0m0.374s
+sys     0m4.282s
+
+in this way, tr2b takes much less time comparing to tr2u due to less system calls
+
+
+therefore, in general, for both coping to terminal and to another file, 
+tr2b is faster. The reason is that tr2b uses system call for writing a
+ whole block of bytes whereas for tr2u, every byte has to be written individually
+  by the 
+catb.c runs faster due to the better efficiency of the system calls.
+also notice that catb.c runs faster when writing to the terminals 
+and writing to a file. 
+
+
+
+

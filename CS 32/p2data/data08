@@ -1,0 +1,5 @@
+LET G 4
+ADD G 5
+PRINT G
+END
+.

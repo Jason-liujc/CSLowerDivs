@@ -1,0 +1,17 @@
+***************
+*** 420,426 ****
+        timespec[0] = get_stat_atime (src_sb);
+        timespec[1] = get_stat_mtime (src_sb);
+  
+-       if (futimens (dest_desc, dst_name, timespec) != 0)
+  	{
+  	  error (0, errno, _("preserving times for %s"), quote (dst_name));
+  	  if (x->require_preserve)
+--- 420,426 ----
+        timespec[0] = get_stat_atime (src_sb);
+        timespec[1] = get_stat_mtime (src_sb);
+  
++       if (coreutils_futimens (dest_desc, dst_name, timespec) != 0)
+  	{
+  	  error (0, errno, _("preserving times for %s"), quote (dst_name));
+  	  if (x->require_preserve)

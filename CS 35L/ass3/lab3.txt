@@ -1,0 +1,58 @@
+1. I followed the instructions and downloaded Coreutils 7.6
+ from the website, using:
+$wget ftp://ftp.gnu.org/gnu/coreutils/coreutils-7.6.tar.gz
+
+and I extracted the package inside tar using:
+$tar -xvf coreutils-7.6.tar.gz
+
+	Then I made a file for this coreutil assignment:
+$mkdir coreU
+	and then I proceeded to read the documentation in configure 
+to understand this coreutil thing and Brady’s patch, which does
+change to ls.c, which seems to be the correct patch since we 
+are fixing the ls command. 
+
+
+2. I used the command:
+$./configure —prefix=/u/eng/class/classliu/coreU
+to configure my package to a certain directory. 
+
+$make
+
+$make install prefix=/u/eng/class/classliu 
+and install into that directory.
+
+
+3. 
+Checking the core util command by going into the right directory and type:
+$./ls -l 
+
+I get outputs like:
+-rwxr-xr-x 1 classliu class  72689 2015-10-16 00:18 yes
+
+confirms the bug.
+
+
+4.
+Then I did:
+
+
+$patch -p1 < my.patch
+
+to apply the patch. p1 is the default for git apply.
+
+
+
+
+5. Then I used touch to create a file and make it an year old.
+
+$touch -t 1401251107 oldfile 
+to create an oldfile that a year old.
+
+Then I used ls -l on the file and it finally provided the correct format. 
+
+
+
+
+
+

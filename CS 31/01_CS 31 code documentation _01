@@ -1,0 +1,301 @@
+CS 31 code documentation
+
+
+
+#include <iostream>
+
+using namespace std;  // p. 37-38 in Savitch book explains this line
+
+int main()
+{
+    int x=1;
+    x=2;
+    int y=2;
+    cout << x+y <<endl;
+
+
+}
+
+
+
+
+
+
+
+//a new one
+
+
+#include <iostream>
+using namespace std;
+
+class Rectangle {
+    int width, height;
+public:
+    void set_values (int,int);
+    int area() {return width*height;}
+};
+
+void Rectangle::set_values (int x, int y) {
+    width = x;
+    height = y;
+}
+
+int main () {
+    Rectangle rect;
+    rect.set_values (3,4);
+    cout << "area: " << rect.area();
+    return 0;
+}
+
+
+
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+    cout << "what is your name ? " ;
+    string personsName;
+    getline(cin, personsName);
+    cout << "what is your quest? ";
+    string quest;
+    getline(cin,quest);
+    
+    cout << "Hello brave " << personsName << "i" << endl;
+    cout << "you want " << quest <<endl;
+    
+}
+
+
+// classes and uniform initialization
+#include <iostream>
+using namespace std;
+
+class Circle {
+    double radius;
+public:
+    Circle(double r) { radius = r; }
+    double circum() {return 2*radius*3.14159265;}
+};
+
+int main () {
+    Circle foo (10);   // functional form
+    Circle bar = 20.0;   // assignment init.
+    Circle baz {30.0};   // uniform init.
+    Circle qux = {40.0}; // POD-like
+    
+    cout << "foo's circumference: " << bar.circum() << '\n';
+    return 0;
+}
+
+
+
+// istream::ignore example
+#include <iostream>     // std::cin, std::cout
+using namespace std;
+int main () {
+    char first, last;
+    
+    cout << "Please, enter your first name followed by your surname: ";
+    
+    first = cin.get();     // get one character
+    cin.ignore(256,' ');   // ignore until space
+    
+    last = cin.get();      // get one character
+    
+    cout << "Your initials are " << first << last << '\n';
+    
+    return 0;
+}
+
+
+#include <iostream>using namespace std;int main() {    string name;
+    getline(cin,name);
+if (name=="")
+    cout << "You didn't type a name!" <<endl;
+ else....
+}
+
+
+// istream::getline example
+#include <iostream>     // std::cin, std::cout
+using namespace std;
+int main () {
+    int a=1;
+    while (a>10)
+    {
+        cout << "testing \n";
+        a--;
+    }
+}——infinite loop
+
+
+// istream::getline example
+#include <iostream>     // std::cin, std::cout
+using namespace std;
+int main () {
+    int nTimes;
+    cin >> nTimes;
+    
+    int n=1;
+    do {
+    cout << "hello \n";
+        n++;
+        
+    
+    }while (n<=nTimes);
+    
+    
+    
+}
+
+
+#include <iostream>
+using namespace std;
+
+int main ()
+{
+string s="Hello";
+    for (int k=0;k<5;k++)
+    {
+        cout << s.at(k) <<endl;
+    }
+    
+    
+}
+
+
+
+
+#include <iostream>
+using  namespace std;
+
+int main()
+{
+    string str;
+    getline(cin,str);
+    int b=0;
+    
+    for (int k=0;k!=str.size();k++)
+    {
+        
+        if (str[k]=='e')
+        {
+            b++;
+        }
+        
+        
+        
+    }
+    
+    
+    cout << "The number of 'e' in the string is " << b << endl;
+} ////////b is a counter, this is an example of a typical counter
+
+
+
+#include <iostream>
+using  namespace std;
+int main ()
+{
+    string str;
+    getline(cin, str);
+    string str2;
+    getline(cin, str2);
+     std::size_t found = str.find(str2);
+    cout << found <<endl;
+    
+} ///the usage of found
+
+
+
+
+#include <iostream>
+using namespace std;
+
+int main ()
+{
+    char ch;
+    cin >> ch;
+    
+    if (isdigit(ch))
+    {
+        cout<< "the character is a dignit \n";
+        
+    }
+    if (islower(ch))
+    {
+        cout << " the charac is a lower case alphabet \n";
+        
+    }
+    
+    if (isupper(ch))
+        cout << "the characer is an upper character \n";
+    
+    
+    
+}
+
+
+
+#include <iostream>
+#include <cmath>
+#include <string>
+using  namespace::std;
+
+bool isValidPhoneNumber(string pn)
+{
+    int numberOfDigits=0;
+    for (int k=0; k!=pn.size();k++)
+    {
+        if (isdigit(pn[k]))
+        {
+numberOfDigits++;
+        }
+       
+        
+    }
+    if (numberOfDigits==10)
+    {
+        return true;
+    }
+    else
+        return false;
+        
+}
+void cleanNumbers(string pn)
+{
+    
+    for (int j=0;j<=pn.size();j++)
+    {
+        if (isdigit(pn[j]))
+        {
+            cout << pn[j];
+        }
+        
+    }
+    
+    
+    
+}
+int main ()
+{
+   cout << "enter a phone number: ";
+    string phone;
+
+    getline(cin,phone);
+       if (isValidPhoneNumber(phone))
+    {
+        cout << "yolo blaze it up "<<endl;
+    }
+    
+    else{
+        cout << "A phone number must have 10 digits." << cleanNumbers(phone) << endl;
+        
+    }
+}
+
+

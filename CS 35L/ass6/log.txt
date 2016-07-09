@@ -1,0 +1,42 @@
+Lab6
+
+I used the following command to install the SSH tools:
+$sudo apt-get update
+
+$sudo apt-get install openssh-server
+
+$sudo apt-get install openssh-client
+
+As an admin,
+
+I did :
+
+
+$sudo useradd -d /home/name -m name  (create a new user)
+
+$sudo passwd name (create password)
+
+cd to directory
+
+$sudo mkdir .ssh (create a directory where we store the IDs)
+
+$sudo chown -R name.ssh (change the ownership of the ID)
+
+$sudo chmod 700 .ssh  (gives permission)
+
+
+
+
+
+As a client:
+
+ssh -keygen (create keys)
+
+ping the server to see if it responds 
+
+ssh-copy-id -i Username@address (copies the public key)
+
+ssh -add (register the private key with the user)
+
+ssh -X Username@address (see if we can remotely access it)
+

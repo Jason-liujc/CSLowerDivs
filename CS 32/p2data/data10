@@ -1,0 +1,5 @@
+LET I 4
+ADD I -7
+PRINT I
+END
+.

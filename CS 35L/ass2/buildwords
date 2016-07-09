@@ -1,0 +1,16 @@
+#!/bin/bash
+#buildwords
+
+
+sed '/<!DOCTYPE/,/Adopt/d' | \
+sed '/<\/table>/,/<\/html>/d' | \
+sed '/<\/tr>/d' | sed '/<tr>/d' | \
+sed '/<td><br>/,/<td><\/td>/d' | \
+sed "s/<u>\([^<]\)*<\/u>/\1/g" | \
+sed "s/\`/'/g" | \
+tr '[:upper:]' '[:lower:]' | \
+sed "s/<td>\([^<]*\)<\/td>/\1/g" | \
+tr -cs [^\'pPkKmMnNwWlLhHaAeEiIoOuU] '[\n*]' | \
+sort -u | \    #remove the duplicates 
+sed '1d'    
+#because the first line is empty

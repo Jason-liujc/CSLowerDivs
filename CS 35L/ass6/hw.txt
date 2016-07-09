@@ -1,0 +1,15 @@
+homework:
+
+
+1.
+This network will still be secure since if one were to snatch the data in ssh it would be encrpyted so it's hard to unencript it. 
+
+If the keyboard is hacked then it wouldn't be safe because the hacker will be able to know all the password and username of the account. 
+
+Having the physical control of the USB wouldn't compromise the secruity becuase the encrption is being done via ssh and there wont be any data that's related to the password saved in the local macine.
+
+
+2. 
+
+The command can't verify the fact that the actual user who signed it created it. 
+A good way to solve this problem would be to introduce a third party software to verify users. 

@@ -1,0 +1,5 @@
+LET T 5
+IF T > 3 THEN 7
+PRINT T
+END
+.

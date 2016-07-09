@@ -1,0 +1,6 @@
+LET J 5
+LET J 0
+LET J 8
+PRINT J
+END
+.

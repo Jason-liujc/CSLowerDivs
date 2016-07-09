@@ -1,0 +1,5 @@
+LET K 5
+GOSUB 0
+PRINT K
+END
+.

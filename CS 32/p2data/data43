@@ -1,0 +1,6 @@
+LET V 5
+GOSUB 4
+PRINT V
+PRINT V
+END
+.

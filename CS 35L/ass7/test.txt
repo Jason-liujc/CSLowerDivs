@@ -1,0 +1,10 @@
+Rewrite the srot13 program you wrote for Homework 5 so that it uses system calls rather than <stdio.h> to read standard input and write standard output. If standard input is a regular file, your program should initially allocate enough memory to hold all the data in that file all at once, rather than the usual algorithm of reallocating memory as you go. However, if the regular file grows while you are reading it, your program should still work, by allocating more memory after the initial file size has been read.
+
+Your program should do one thing in addition to the Homework 5 program. If successful, it should use the fprintf function to output a line of the following form to standard error before finishing:
+
+Number of comparisons: 23451
+where the integer "23451" is replaced by the actual number of comparisons done by your program, and where a "comparison" is an invocation of rot13cmp to compare two input lines. The line should be worded exactly as above: for example, it should contain exactly three spaces. It should be terminated with a newline.
+
+Call the rewritten program srot13u. Measure any differences in performance between srot13 and srot13u using the time command. Run your program on inputs of varying numbers of input lines, and estimate the number of comparisons as a function of the number of input lines.
+
+Also, write a shell script srot13s that uses tr2b and standard sort to sort encrypted files using a pipeline (that is, your script should not create any temporary files). Use the time command to compare the overall performance of srot13s to the other two programs. You do not need to count the number of comparisons that srot13s makes.

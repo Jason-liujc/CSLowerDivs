@@ -1,0 +1,5 @@
+LET H 4
+ADD H 75
+PRINT H
+END
+.

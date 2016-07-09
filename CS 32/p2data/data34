@@ -1,0 +1,7 @@
+LET T 1
+SUB T 6
+IF T = -5 THEN 5
+PRINT T
+PRINT T
+END
+.

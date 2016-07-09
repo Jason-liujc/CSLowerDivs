@@ -1,0 +1,5 @@
+LET V 6
+SUB V 9
+PRINT V
+END
+.

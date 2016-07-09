@@ -1,0 +1,174 @@
+Disclaimer: I'm using my personal linux machine so the files under 
+/usr or /bin/ might be different from the linux server. 
+
+
+1.How can you get man to print all the commands that have a specific
+word in their man page?
+
+ By using: 
+$ man -k keyword
+
+
+2. Where are the cp and wc programs located in the file system?
+
+use the whereis command: 
+cp: /bin/cp 	 /usr/share/man/man1/cp.1.gz /usr/share/man/man1p/cp.1p.gz
+wc: /usr/bin/wc		/usr/share/man/man1/wc.1.gz /usr/share/man/man1p/wc.1p.gz
+
+
+3. What executable programs have names that are 
+just one character long, and what do they do?
+
+w is a command that  displays  information  about the users currently on 
+the machine and their processes.
+
+. (bash_builtins)is command that run a command script in the current shell 
+(source: http://ss64.com/bash/)
+
+
+4. When you execute the command named by the symbolic
+link /usr/bin/cc, which file actually is executed?
+
+$ file /usr/bin/cc
+/usr/bin/cc: symbolic link to `gcc'
+
+It links to gcc. And gcc is located in /usr/bin/gcc
+
+
+
+5. The chmod program changes permissions on a file. 
+What does the symbolic mode g-s mean, in terms of permissions?
+
+g: group's permission
+-: take away permission; it takes away the mode bits previously used
+s: user or group set-ID
+
+
+6. What option to find lets you search for files 
+that have been modified in the last 3 days?
+
+$ find . -type f -mtime 3
+should be sufficient. 
+"-mtime n" means "File’s  data was last modified n*24 hours ago."
+"-type f" means we only search for regular files. 
+
+
+7. Use the previous answer to find all 
+directories modified in the last 3 days.
+
+change type to d (directory)
+$ find . -type d -mtime 3
+
+
+8. Of the files in the same directory as find, 
+how many of them are symbolic links?
+
+I went to find's directory, and typed:
+$ ls -l 
+
+About 30 of them are symbolic (I used my own linux computer,
+installed a bunch of GNU related package so it'll probably
+be different from the Linux server) 
+
+
+9. What is the oldest regular file in the /usr/lib directory?
+
+I used the command:
+$ ls -t 
+with most old at bottom; and at the bottom is a file called "pymodules"
+
+
+10. Where does the locale command get its data from?
+
+locale: /usr/bin/locale 
+/usr/lib/locale 
+/usr/include/locale.h 
+/usr/share/locale /usr/share/man/man1/locale.1.gz 
+/usr/share/man/man1p/locale.1p.gz 
+/usr/share/man/man3/locale.3pm.gz 
+/usr/share/man/man5/locale.5.gz 
+/usr/share/man/man7/locale.7.gz
+
+
+11. In Emacs, what commands have sort in their name?
+
+I used auto-completion, and the results are:
+I used "whereis -sort" and "whereis sort-"
+
+sort-columns 
+sort-fields
+sort-lines
+sort-numeric-fields
+sort-pages
+sort-paragraphs 
+sort-regexp-fields 
+Buffer-menu-sort                       Buffer-menu-sort-by-column
+ibuffer-invert-sorting                 ibuffer-toggle-sorting-mode
+rmail-sort-by-author                   rmail-sort-by-correspondent
+rmail-sort-by-date                     rmail-sort-by-labels
+rmail-sort-by-lines                    rmail-sort-by-recipient
+rmail-sort-by-subject
+
+
+12. Briefly, what do the Emacs keystrokes C-a through C-z do? 
+Can you list their actions concisely?
+
+C-a : Moves to the beginning of the current line.
+C-b: Backward char
+C-c: shell related commands
+C-e: end of the line
+C-f: forward char
+C-g: stop current command
+C-h: Command help
+C-k: Kill line
+C-l: recenter
+C-n: Next line 
+C-p: previous line
+C-r: isearch-backward
+C-s: isearch-forward
+C-t: Transpose char
+C-v: scroll up
+C-w: Kill region
+C-x: set-fill-prefix
+C-y: Yank
+C-z: suspend emacs
+
+
+
+
+13. In more detail, what does the Emacs keystroke C-g do?
+
+C-g: quit, cancel running or parially running command. 
+Here's CMU's explanation :
+
+ "Quitting with `C-g' is used for getting rid of a partially typed
+command, or a numeric argument that you don't want.  It also stops a
+running command in the middle in a relatively safe way, so you can use
+it if you accidentally give a command which takes a long time.  In
+particular, it is safe to quit out of killing; either your text will
+*all* still be in the buffer, or it will *all* be in the kill ring (or
+maybe both).  Quitting an incremental search does special things
+documented under searching; in general, it may take two successive
+`C-g' characters to get out of a search."
+
+It's similar to a Ctrl-c in some compilers where it just stops running programs.
+
+
+14. What does the Emacs yank function do?
+
+"Yanking" means reinserting text previously killed.
+
+Here are some commands:
+C-y
+M-y
+M-w
+C-M-w
+
+
+15. When looking at the directory /usr/bin, 
+what's the difference between the output of the ls -l command, 
+and the directory listing of the Emacs dired command?
+
+The dired command also list hidden files.
+It's just like bash command: 
+$ls -a -l

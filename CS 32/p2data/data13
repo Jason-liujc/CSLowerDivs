@@ -1,0 +1,5 @@
+LET R 8
+DIV R 2
+PRINT R
+END
+.

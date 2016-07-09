@@ -1,0 +1,49 @@
+Q1. Why did Brady's patch remove the line "case_long_iso_time_style:"? 
+Was it necessary to remove that line? Explain.
+
+It was removed because there is an identical case above it. It was removed to:
+1. clean up the code.
+2. to make the code less confusing.
+3. prevent runtime situation when the code might go through the repeated case. 
+
+
+Q2. If your company adopts this patched version of Coreutils 
+instead of the default one, what else should you watch out for?
+Might this new version of Coreutils introduce other problems 
+with your application, perhaps in countries where users don't 
+speak English and don't understand English-format dates?
+
+There are other commands in the GNU core utilities might behave 
+similar to the ls command bug. So we have to watch 
+out for it (the time format). 
+
+Also users from different countries might have different
+habit on time format which might confuse users from different places.
+
+
+
+
+Q3. What happens when this script is invoked 
+on an empty file like /dev/null, and why?
+
+It says “index error: list index out of range”. 
+The reason is that the program randomly chose a line 
+and we the program try to access the sequence, 
+because the content list’s length is zero, and 
+therefore it’s out of range. 
+
+
+
+Q4. What happens when this script is invoked with 
+Python 3 rather than Python 2, and why? (You can 
+run Python 3 on the SEASnet hosts by using the 
+command python3 instead of python.)
+
+It gives an error at the IOError line because the 
+syntax of that part changed in Python 3 comparing 
+to 2. It should be “except IOError as err”
+
+
+
+
+

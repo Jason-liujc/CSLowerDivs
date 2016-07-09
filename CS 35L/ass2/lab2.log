@@ -1,0 +1,69 @@
+>> I changed the LC_CTYPE from en_US.UTF-8 to C based on the suggestion in 
+the assignment description
+
+>>I downloaded the words file from the SEASnet 
+directory /usr/share/dict/words
+
+>> 
+I put:
+$cat assign2.html | tr -c ‘A-Za-z’ ‘[\n*]’
+
+c stands for complement.
+This replaces each of the characters that are
+ not alphabets with an new line
+
+$cat assign2.html | tr -cs ‘A-Za-z’ ‘[\n*]’
+
+s stands for squeeze.
+This is is replace multiple characters (consecutive) with a new line.
+Base on the result from the last command, this essentially
+delete the extra new lines.
+
+
+$cat assign2.html | tr -cs ‘A-Za-z’ ‘[\n*]’ | sort
+
+This pipe the results from tr to a sort function where it sorts
+the result alphabetically. 
+
+
+$cat assign2.html | tr -cs ‘A-Za-z’ ‘[\n*]’ | sort -u
+This command takes the output from the last command
+ and remove all the repeated words.
+
+$cat assign2.html | tr -cs ‘A-Za-z’ ‘[\n*]’ | sort -u 
+| comm - words
+
+This pipes the output from the sort function and put 
+it as the input for comm. It
+ comm compare the content of two files. There are three 
+ columns of the output results. 
+ The first one is the line that are unique to left f
+ ile; the second one are the lines 
+ that are unique to the right file; the third one 
+ are the lines that appear in 
+ both files. 
+
+
+$cat assign2.html | tr -cs ‘A-Za-z’ ‘[\n*]’ | sort -u 
+| comm —23 - words
+
+This, comparing to the last command, supppressed the 
+result of column two and three. 
+Therefore, it essentially shows the lines that
+ are unique to left files. 
+
+my code for buildwords:
+
+sed '/<!DOCTYPE/,/Adopt/d' | \
+sed '/<\/table>/,/<\/html>/d' | \
+sed '/<\/tr>/d' | sed '/<tr>/d' | \
+sed '/<td><br>/,/<td><\/td>/d' | \
+sed "s/<u>\([^<]\)*<\/u>/\1/g" | \
+sed "s/\`/'/g" | \
+tr '[:upper:]' '[:lower:]' | \
+sed "s/<td>\([^<]*\)<\/td>/\1/g" | \
+tr -cs [^\'pPkKmMnNwWlLhHaAeEiIoOuU] '[\n*]' | \
+sort -u | \
+sed '1d'
+
+

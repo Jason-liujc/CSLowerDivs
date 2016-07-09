@@ -1,0 +1,66 @@
+Log for lab 8
+
+
+I first cd'ed to the right directory and check for the sort version:
+
+$sort --version
+
+
+
+
+
+$od -An -f -N 4000000 < /dev/urandom | tr -s ' ' '\n' > test.txt
+
+to generate 4M bytes of random numbers and put it in test.txt
+
+
+I removed the white spaces using:
+tr -s ' ' '\n' | sed '1d' > test2.txt
+this command. 
+
+Then I used od -c test2.txt
+
+
+
+
+I use the option —parallel to run multithreads:
+
+
+for each number of threads I ran:
+
+$time -p sort -g --parallel=<NUM> test2.txt > /dev/null
+
+where NUM is a integer of number of threads. 
+
+
+Here are the results:
+
+NUM=1:
+
+real 93.39
+user 101.27
+sys 0.15
+
+NUM=2:
+
+real 66.44
+user 119.30
+sys 0.22
+
+NUM=4:
+real 31.99
+user 140.31
+sys 0.40
+
+
+NUM=8:
+real 29.16
+user 143.99
+sys 0.88
+
+
+As one can see, the real time decreases as we increase the number of threads.
+For the user and the system, the time increases as we increases the number of threads. 
+This makes sense because we are using more of the CPU when using more threads. 
+Generally, multithread sorting makes the sorting faster but more 
+resource consuming as well.

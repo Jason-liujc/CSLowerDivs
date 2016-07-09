@@ -1,0 +1,5 @@
+LET S 9
+MULT S 6
+PRINT S
+END
+.

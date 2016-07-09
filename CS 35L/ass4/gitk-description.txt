@@ -1,0 +1,17 @@
+gitk discription:
+
+
+the upper left window are the branches, with yellow dot showing the head. 
+there’s branch/remote login/commit message.
+The dots might go inward (of the interface) showing
+ the tree structure of the branch.
+
+the upper right window are the commit authors, with time on the right
+
+
+the bottom left are the file changes in diff patch format
+
+the bottom right window are the files impacted by the select commit. 
+
+In the middle there’s SHA ID for the commit. 
+

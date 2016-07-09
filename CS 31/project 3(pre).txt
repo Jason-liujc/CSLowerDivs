@@ -1,0 +1,126 @@
+#include <iostream>
+#include <string>
+#include <assert.h>
+
+
+using namespace std;
+//stringSize=sizeof(h)/sizeof(h[0]);
+string h[7]={"peter", "lois", "meg", "chris", "", "meg", "stewie"};
+
+string d[9] = {"lois", "chris", "peter", "peter", "meg", "meg", "meg", "peter", "peter"}; // the other string
+int findLast(const string a[], int n, string target);// the first function
+int tally(const string a[], int n, string target);//the second function
+bool findFirstSequence(const string a[], int n, string target, int& begin, int& end);//the third function
+int moveToEnd(string a[], int n, int pos);   // the fourth function
+
+
+
+int main ()
+{
+    
+    int bg;
+    int en;
+    assert(findLast(h, 7, "meg")==5);
+    assert(tally(h, 7, "meg")==2);
+  
+    
+    
+    string d[9] = {
+        "lois", "chris", "peter", "peter", "meg", "meg", "meg", "peter", "peter"
+    };
+    int b;
+    int e;
+    bool b1 = findFirstSequence(d, 9, "peter", b, e);  //  returns true and
+    cout << b << e <<endl;
+    bool b2 = findFirstSequence(d, 9, "chris", b, e);  //  returns true and
+    cout << b << e <<endl;
+    bool b3 = findFirstSequence(d, 9, "brian", b, e);  //  returns false and
+      cout << b << e <<endl;
+    
+    
+}
+
+//use size of?
+//if it is an empty string, it's supposed to succeed whatever?
+
+
+int findLast(const string a[], int n, string target)
+{
+    int counter=0;;
+    if (n<0)
+        return -1;
+   
+    for (int i=0; i<n; i++)
+    {
+        if (h[i]==target)
+            counter=i;
+    }
+    return counter;
+    
+}
+
+int tally(const string a[], int n, string target)
+{
+    int counter=0;
+    for (int i=0; i<n; i++)
+    {
+        if (h[i]==target)
+            counter++;
+        
+        
+        
+    }
+    return counter;
+    
+}
+
+bool findFirstSequence(const string a[], int n, string target, int& begin, int& end)
+{
+    int counter=0;
+    
+    
+    if (n<0)
+        return false;
+    
+    
+    for (int i=0; i<n; i++)
+    {
+        if (d[i]==target)
+        {
+           begin=i;
+            for (int k=i;k<n;k++)
+            {
+                if (d[k]==target)
+                    counter++;
+                end=begin+counter-1;
+                if (d[k]!=target)
+                    return true;
+                
+            }
+            
+        }
+        
+        
+    }
+   
+    
+    if (begin==0)
+        return false;
+    
+    return true;
+
+    
+}
+
+int moveToEnd(string a[], int n, int pos)
+{
+    
+    
+    
+    
+}
+
+
+
+
+

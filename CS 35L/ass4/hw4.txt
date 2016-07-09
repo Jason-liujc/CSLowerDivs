@@ -1,0 +1,45 @@
+1. 
+$git branch quote
+$git checkout v3.0
+
+2. 
+copy the patch into the diffutil file and then:
+
+$patch -p1 < quote-3.0-patch.txt
+
+
+3. 
+$emacs ChangeLog
+C-x 4-a and add entries to the ChangeLog
+
+
+6. 
+git add .
+git commit --file=ChangeLog
+git commit --amend --author=‘my name and email’
+
+7. 
+
+git format-patch -1 --stdout > formatted-patch.txt
+
+8. 
+I then proceeded to verify the change log file:
+
+export PATH=$PATH:/usr/local/cs/bin
+
+./bootstrap
+./configure
+make
+make check
+make distdir
+
+
+
+10. 
+open XQuartz and in its terminal type:
+ssh -X myusername@lnxsrv.seas.ucla.edu
+cd ~eggert/src/gnu/emacs
+export PATH=/usr/local/cs/bin:$PATH
+gitk
+Depends on what professor mean by not newer than 01-25,
+the merge point should be the merge master. 

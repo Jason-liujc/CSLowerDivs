@@ -1,0 +1,41 @@
+1. I downloaded the anonymous clone from the git repository.
+Using the command:
+$git clone git://git.savannah.gnu.org/diffutils.git
+
+2.
+I go in to the directory:
+$cd diffutils
+and then create the log:
+$git log > git-log.txt
+
+3. 
+$git tag -l > git-tags.txt
+
+
+4. I opened the git-log file and looked up the commit, the number is 62ca21c8c1a5aa3488589dcb191a4ef04ae9ed4f, made by Professor Eggert,
+and generated a patch and saved it to quote-patch.txt:
+git show 62ca21c8c1a5aa3488589dcb191a4ef04ae9ed4f > quote-patch.txt
+
+5. 
+$git checkout v3.0
+$patch -p1 < quote-patch.txt
+
+
+
+6. I used Emacs to revert all the changed except c files, 
+and go to each files and revert the changes by looking 
+at the diff. it seems that the program changed ` to ‘
+
+7. I removed all the untracked files by using:
+$git clean -n  
+and
+$git clean -f 
+and then git status showed me about the status of the repository. 
+
+8. used git diff to generate a quote-3.0-patch and checked “diff . -“
+and “./diff —help” so that to make sure it’s fixed.
+
+9. I download diffuil to another directory and I went through some files. 
+The files aren’t identical (obviously), but most files are identical because 
+the patch didn’t change them. the files showed
+ some differences between the .c files 

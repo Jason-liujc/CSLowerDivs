@@ -1,0 +1,73 @@
+#!/bin/bash
+
+
+dir=$1
+cd "$dir"
+
+dFiles=`ls .[^.]* | sort`
+rFiles=`ls | sort`
+declare -a arr1
+declare -a arr2
+
+
+size1=0
+IFS=$'\n'
+for file in $dFiles
+do
+	arr1[$size1]="$file"
+	let size1=size1+1
+done
+
+
+size2=0
+IFS=$'\n'
+for file in $rFiles
+do
+	if [ -f "$file" ] && [ ! -L "$file" ] #in case the file is not regular 
+	then
+		arr2[$size2]="$file"
+		let size2=size2+1
+	else
+		echo "$dir/$file is not a regular file"
+	fi
+done
+
+
+declare -a final
+size=0
+i=0
+while [ $i -lt $size1 ]
+do
+	final[$size]=${arr1[$i]}
+	let i=i+1
+	let size=size+1
+done
+
+i=0
+while [ $i -lt $size2 ]
+do
+	final[$size]=${arr2[$i]}
+	let i=i+1
+	let size=size+1
+done
+
+
+i=0
+while [ $i -lt $size ]
+do
+
+	let temp=$i+1
+	while [ $temp -lt $size ]
+	do
+		equal=`cmp -- "${final[$i]}" "${final[$temp]}"` 
+		if [ -z $equal ]
+		then
+			ln -f -- "${final[$i]}" "${final[$temp]}"
+			#create hard link here
+			break
+		fi
+		let temp=temp+1
+	done
+	let i=i+1
+done
+

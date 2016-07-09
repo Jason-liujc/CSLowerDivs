@@ -1,0 +1,75 @@
+In this homework, I created file with 200, 5000 and 20k words respectively
+And here are the results:
+
+$time ./sfrob < 200.txt
+real 0m0.002s
+user 0m0.001s
+sys  0m0.000s
+
+time ./sfrobu < 200.txt
+real 0m0.003s
+user 0m0.000s
+sys  0m0.002s
+
+time ./sfrob < 5000.txt
+real 0m0.006s
+user 0m0.001s
+sys  0m0.002s
+
+time ./sfrobu < 5000.txt
+real 0m0.008s
+user 0m0.002s
+sys  0m0.005s
+
+time ./sfrob < 20000.txt
+real 0m0.010s
+user 0m0.004s
+sys  0m0.003s
+
+time ./sfrobu <20000.txt
+real 0m0.161s
+user 0m0.008s
+sys  0m0.139s
+
+As one can see, sfrobu takes a lot more time than strob, and this is because
+strobe uses write, which makes considerable amount of system calls and 
+therefore burden the kernel and slow down the running time. 
+
+
+
+
+For each run of strobu, I record the number of comparisons it makes:
+
+200    words = 1259 comparisons
+5000   words = 47586 comparisons
+20000  words = 218069 comparisons
+
+Based on the big O notation of the sorting algorithm, and an estimation
+of the trend above, we can make the assertion that the algorithm runs
+in O(Nlog(N)) and the number of comparison will follow that trend as well.
+
+
+
+
+Here are the performance of sfrobs:
+
+time ./sfrobs < 200words
+real	0m0.005s
+user	0m0.001s
+sys	0m0.003s
+
+
+time ./sfrobs < 5000words
+real	0m0.036s
+user	0m0.028s
+sys	0m0.009s
+
+time ./sfrobs <20000words
+real	0m0.132s
+user	0m0.088s
+sys	0m0.024s
+
+
+As one can see,strobs is faster than sfrobu, but slower than sfrob.
+ sfrobs is faster than sfrobu because it users buffer IO and makes 
+more efficient system call. 

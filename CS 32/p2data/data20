@@ -1,0 +1,5 @@
+LET Y 5
+GOTO -1
+PRINT Y
+END
+.

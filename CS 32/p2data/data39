@@ -1,0 +1,6 @@
+LET Z 3
+PRINT Z
+GOTO 5
+GOTO 9
+END
+.

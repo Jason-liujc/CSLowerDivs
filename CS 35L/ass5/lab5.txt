@@ -1,0 +1,67 @@
+Lab5
+
+1.
+I use wget to get the package:
+$wget http://web.cs.ucla.edu/classes/fall15/cs35L/assign/coreutils-with-bug.tar.gz
+ and used 
+$tar -zxvf “filename”
+went into the folder and entered:
+./configure CFLAGS='-g3 -O0'
+
+2. 
+Used make but it gave me 
+
+ so I went to get the patch from the website, coreutil.diff. 
+
+3. 
+$patch -p0 < coreutils.diff
+and make it again and it works
+
+4.
+then I put:
+$ tmp=$(mktemp -d)
+$ cd $tmp
+$ touch -d '1918-11-11 11:00 GMT' wwi-armistice
+$ touch now
+$ sleep 1
+$ touch now1
+$ TZ=UTC0 ls -lt --full-time wwi-armistice now now1
+$ cd
+$ rm -fr $tmp
+
+at the command 
+
+
+
+
+5.
+Now we try to get rid of the bug. I put a break point in sort_files 
+and compare_time and traced the variables. I eventually 
+discovered that all these functions leads to the timespect 
+function. So the bug probably comes from the timespec file so
+I went into it’s implementation and discovered 
+that the is the variable int diff. 
+It overflows during the
+ subtraction, so I went on to fix it. 
+
+
+6.
+
+I went into the library folder and opened up using emacs time_cpm.h
+ file and changed the implementation of the header.
+I use:
+$diff -u timespec.h newtime.h > lab5.diff.
+Then I applied the patch and see the problem is fixed. I then added the
+changelog
+
+
+Answer some questions:
+
+1. The make didn’t work because there’s a problem in timespec.h
+ which I fixed.
+
+
+2. When I try to reproduce the problem, the sensate can handle
+ this because the they are machine of different bits. The Seasnet
+ use 64 bits and NFS use 32 bits. There’s bits lost during the conversion.
+
